@@ -1,6 +1,7 @@
 import './App.css';
 import axios from 'axios';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 import { Component } from 'react';
@@ -79,18 +80,11 @@ export default class App extends Component {
                   <Redirect to={'/dashboard'} />
               )}
             />
-            <Route
-              exact
+            <ProtectedRoute
               path='/dashboard'
-              render={props => (
-                loggedInStatus === 'LOGGED_IN' ?
-                  <Dashboard
-                    {...props}
-                    currentUser={currentUser}
-                    handleLogout={this.handleLogout}
-                  /> :
-                  <Redirect to={'/'} />
-              )}
+              component={Dashboard}
+              currentUser={currentUser}
+              handleLogout={this.handleLogout}
             />
           </Switch>
         </BrowserRouter>
