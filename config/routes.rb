@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  resources :sessions, only: [:create] do
-    collection do
-      get :logged_in
-      delete :logout
+  namespace :api do
+    namespace :v1 do
+      resources :sessions, only: [:create] do
+        collection do
+          get :logged_in
+          delete :logout
+        end
+      end
+      resources :registrations, only: [:create]
     end
   end
-  resources :registrations, only: [:create]
 end

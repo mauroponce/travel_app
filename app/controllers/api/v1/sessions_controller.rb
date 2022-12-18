@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class Api::V1::SessionsController < ApplicationController
   include CurrentUser
 
   before_action :set_current_user, only: [:logged_in, :logout]

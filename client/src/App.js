@@ -28,7 +28,7 @@ export default class App extends Component {
 
   handleLogout = () => {
     axios.delete(
-      'http://localhost:4000/sessions/logout',
+      'http://localhost:4000/api/v1/sessions/logout',
       { withCredentials: true } // work with cookies (Rails session)
     ).then(() => {
       this.setState({
@@ -42,7 +42,7 @@ export default class App extends Component {
 
   checkLoginStatus = () => {
     axios.get(
-      'http://localhost:4000/sessions/logged_in',
+      'http://localhost:4000/api/v1/sessions/logged_in',
       { withCredentials: true } // work with cookies (Rails session)
     ).then((response) => {
       if(response.data.logged_in) {

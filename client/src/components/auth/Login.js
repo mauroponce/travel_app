@@ -17,7 +17,7 @@ export default class Login extends Component {
   
     const {email, password} = this.state;
     axios.post(
-      'http://localhost:4000/sessions',
+      'http://localhost:4000/api/v1/sessions',
       {
         user: {
           email,
