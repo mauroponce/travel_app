@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         end
       end
       resources :registrations, only: [:create]
+      resources :trips
     end
   end
 end

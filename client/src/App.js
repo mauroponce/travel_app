@@ -65,30 +65,28 @@ export default class App extends Component {
   render() {
     const {currentUser, loggedInStatus} = this.state;
     return (
-      <div className="App">
-        <BrowserRouter>
-          <Switch>
-            <Route
-              exact
-              path='/'
-              render={props => (
-                loggedInStatus === 'NOT_LOGGED_IN' ?
-                  <Home
-                    {...props}
-                    handleLogin={this.handleLogin}
-                  /> :
-                  <Redirect to={'/dashboard'} />
-              )}
-            />
-            <ProtectedRoute
-              path='/dashboard'
-              component={Dashboard}
-              currentUser={currentUser}
-              handleLogout={this.handleLogout}
-            />
-          </Switch>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route
+            exact
+            path='/'
+            render={props => (
+              loggedInStatus === 'NOT_LOGGED_IN' ?
+                <Home
+                  {...props}
+                  handleLogin={this.handleLogin}
+                /> :
+                <Redirect to={'/dashboard'} />
+            )}
+          />
+          <ProtectedRoute
+            path='/dashboard'
+            component={Dashboard}
+            currentUser={currentUser}
+            handleLogout={this.handleLogout}
+          />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
