@@ -1,25 +1,26 @@
 class Api::V1::TripsController < ApplicationController
   before_action :set_trip, only: %i[ show edit update destroy ]
 
-  # GET /trips or /trips.json
   def index
     @trips = Trip.all
+    respond_to do |format|
+      format.json
+    end
   end
 
-  # GET /trips/1 or /trips/1.json
   def show
+    respond_to do |format|
+      format.json { render json: @trip, status: :ok }
+    end
   end
 
-  # GET /trips/new
   def new
     @trip = Trip.new
   end
 
-  # GET /trips/1/edit
   def edit
   end
 
-  # POST /trips or /trips.json
   def create
     @trip = Trip.new(trip_params)
 
@@ -32,7 +33,6 @@ class Api::V1::TripsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /trips/1 or /trips/1.json
   def update
     respond_to do |format|
       if @trip.update(trip_params)
@@ -43,7 +43,6 @@ class Api::V1::TripsController < ApplicationController
     end
   end
 
-  # DELETE /trips/1 or /trips/1.json
   def destroy
     @trip.destroy
 

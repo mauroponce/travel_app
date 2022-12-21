@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export default function Dashboard(props) {
   function handleLogout(e) {
@@ -23,7 +24,7 @@ export default function Dashboard(props) {
           <div className="absolute right-2 mt-1 w-48 divide-y divide-gray-200 rounded-md border border-gray-200 bg-white shadow-md">
             <div className="flex items-center space-x-2 p-2">
               <img src="https://plchldr.co/i/40x40?bg=111111" alt="plchldr.co" className="h-9 w-9 rounded-full" />
-              <div className="font-medium">Hafiz Haziq</div>
+              <div className="font-medium">Mauro Ponce</div>
             </div>
 
             <div className="flex flex-col space-y-3 p-2">
@@ -52,27 +53,17 @@ export default function Dashboard(props) {
             x-show="asideOpen">
             <a href="#" className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
                 <span className="text-2xl"><i className="bx bx-home"></i></span>
-                <span>Dashboard</span>
-            </a>
-
-            <a href="#" className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
-                <span className="text-2xl"><i className="bx bx-cart"></i></span>
-                <span>Cart</span>
+                <span>Home</span>
             </a>
 
             <a href="#" className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
                 <span className="text-2xl"><i className="bx bx-shopping-bag"></i></span>
-                <span>Shopping</span>
+                <Link to={'/trips'}>Trips</Link>
             </a>
 
             <a href="#" className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
                 <span className="text-2xl"><i className="bx bx-heart"></i></span>
                 <span>My Favourite</span>
-            </a>
-
-            <a href="#" className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
-                <span className="text-2xl"><i className="bx bx-user"></i></span>
-                <span>Profile</span>
             </a>
         </aside>
 

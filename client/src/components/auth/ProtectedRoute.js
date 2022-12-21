@@ -1,21 +1,18 @@
-import { Component } from 'react';
-import {Route, Redirect} from 'react-router-dom';
+import React from 'react'
+import {
+  Navigate,
+  Outlet
+} from 'react-router-dom';
 
-
-export default class ProtectedRoute extends Component {
-  render() {
-    const { component: Component, currentUser, ...props } = this.props;
-    const isUserLoggedIn = Object.keys(currentUser).length;
-  
-    return (
-      <Route 
-        {...props} 
-        render={() => {
-          return isUserLoggedIn ?
-            <Component {...this.props} /> :
-            <Redirect to='/' />
-        }}
-      />
-    )
+export default function ProtectedRoute({
+  isAllowed,
+  redirectPath = '/login',
+  children,
+}) {
+  if (!isAllowed) {
+    debugger
+    return <Navigate to={redirectPath} replace />;
   }
+
+  return children ? children : <Outlet />;
 }

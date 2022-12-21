@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import {
+  Navigate
+} from 'react-router-dom';
 
 export default class Login extends Component {
   constructor(props) {
@@ -43,6 +46,9 @@ export default class Login extends Component {
   }
 
   render() {
+    if (this.props.currentUser) {
+      return <Navigate to={'/'} replace />;
+    }
     const {email, password} = this.state;
     return (
       <div className="min-h-screen bg-gray-100 flex flex-col">
