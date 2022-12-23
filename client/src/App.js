@@ -10,6 +10,7 @@ import Dashboard from './components/Dashboard';
 import TripsList from './components/trips/TripsList';
 import Login from './components/auth/Login';
 import Trip from './components/trips/Trip';
+import TripForm from './components/trips/TripForm';
 
 export default class App extends Component {
   constructor(props) {
@@ -70,11 +71,12 @@ export default class App extends Component {
     return (
       <Routes>
         <Route element={<ProtectedRoute isAllowed={!!currentUser} />}>
-          <Route index element={<Dashboard handleLogout={this.handleLogout}/>} />
-          <Route path="dashboard" element={<Dashboard handleLogout={this.handleLogout}/>} />
+          <Route index element={
+            <Dashboard currentUser={currentUser} handleLogout={this.handleLogout}/>}
+          />
           <Route path="trips" element={<TripsList />} />
-          <Route path="trips/new" element={<Trip />} />
           <Route path="trips/:id" element={<Trip />} />
+          <Route path="trips/new" element={<TripForm />} />
         </Route>
         <Route path='login' element={<Login currentUser={currentUser} handleSuccessfulAuth={this.handleLogin} />} />
         <Route path="*" element={<p>There's nothing here: 404!</p>} />

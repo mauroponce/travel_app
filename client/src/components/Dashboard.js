@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 export default function Dashboard(props) {
-  function handleLogout(e) {
-    e.preventDefault();
-    props.handleLogout();
+  const handleLogout = (e) => {
+    e.preventDefault()
+    props.handleLogout()
   }
+
   return (
     <main className="min-h-screen w-full bg-gray-100 text-gray-700" x-data="layout">
       <header className="flex w-full items-center justify-between border-b-2 border-gray-200 bg-white p-2">
@@ -13,7 +14,7 @@ export default function Dashboard(props) {
             <button type="button" className="text-3xl">
               <i className="bx bx-menu"></i>
             </button>
-            <div>Logo</div>
+            <div>Travel App</div>
         </div>
 
         <div>
@@ -24,7 +25,7 @@ export default function Dashboard(props) {
           <div className="absolute right-2 mt-1 w-48 divide-y divide-gray-200 rounded-md border border-gray-200 bg-white shadow-md">
             <div className="flex items-center space-x-2 p-2">
               <img src="https://plchldr.co/i/40x40?bg=111111" alt="plchldr.co" className="h-9 w-9 rounded-full" />
-              <div className="font-medium">Mauro Ponce</div>
+              <div className="font-medium">{props.currentUser.email}</div>
             </div>
 
             <div className="flex flex-col space-y-3 p-2">

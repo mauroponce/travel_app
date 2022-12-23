@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+import axios from 'axios'
 import {
   Navigate
-} from 'react-router-dom';
+} from 'react-router-dom'
 
 export default class Login extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       email: '',
       password: '',
       loginErrors: '' // TODO: show errors
-    };
+    }
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = (e) => {
+    e.preventDefault()
   
-    const {email, password} = this.state;
+    const {email, password} = this.state
     axios.post(
       'http://localhost:4000/api/v1/sessions',
       {
@@ -30,26 +30,26 @@ export default class Login extends Component {
       { withCredentials: true } // allow server to set cookie in the browser
     ).then(response => {
       if(response.data.user) {
-        this.props.handleSuccessfulAuth(response.data);
+        this.props.handleSuccessfulAuth(response.data)
       } else if(response.data.status === 'unauthorized'){
-        alert('Invalid credentials');
+        alert('Invalid credentials')
       }
     }).catch( error => {
-      console.log(error);
-    });
+      console.log(error)
+    })
   }
 
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
-    });
+    })
   }
 
   render() {
     if (this.props.currentUser) {
-      return <Navigate to={'/'} replace />;
+      return <Navigate to={'/'} replace={true} />
     }
-    const {email, password} = this.state;
+    const {email, password} = this.state
     return (
       <div className="min-h-screen bg-gray-100 flex flex-col">
         <div className="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
@@ -98,6 +98,6 @@ export default class Login extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }

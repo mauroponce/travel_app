@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import { getTrip } from '../../services/trips';
+import { useParams } from 'react-router-dom'
+import { getTrip } from '../../services/trips'
 
 
 export default function Trip() {
@@ -10,10 +10,10 @@ export default function Trip() {
   useEffect(() => {
     getTrip(id).then(response => {
       setTrip(response.data)
-    });
-  }, []);
+    })
+  }, [])
 
   return (
     <div>{trip.name}</div>
-  );
+  )
 }

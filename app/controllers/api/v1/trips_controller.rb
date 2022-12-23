@@ -10,7 +10,7 @@ class Api::V1::TripsController < ApplicationController
 
   def show
     respond_to do |format|
-      format.json { render json: @trip, status: :ok }
+      format.json
     end
   end
 
@@ -26,7 +26,7 @@ class Api::V1::TripsController < ApplicationController
 
     respond_to do |format|
       if @trip.save
-        format.json { render :show, status: :created, location: @trip }
+        format.json { render :show, status: :created }
       else
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
@@ -36,7 +36,7 @@ class Api::V1::TripsController < ApplicationController
   def update
     respond_to do |format|
       if @trip.update(trip_params)
-        format.json { render :show, status: :ok, location: @trip }
+        format.json { render :show, status: :ok }
       else
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
