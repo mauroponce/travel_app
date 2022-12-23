@@ -9,6 +9,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import Dashboard from './components/Dashboard';
 import TripsList from './components/trips/TripsList';
 import Login from './components/auth/Login';
+import Trip from './components/trips/Trip';
 
 export default class App extends Component {
   constructor(props) {
@@ -72,6 +73,8 @@ export default class App extends Component {
           <Route index element={<Dashboard handleLogout={this.handleLogout}/>} />
           <Route path="dashboard" element={<Dashboard handleLogout={this.handleLogout}/>} />
           <Route path="trips" element={<TripsList />} />
+          <Route path="trips/new" element={<Trip />} />
+          <Route path="trips/:id" element={<Trip />} />
         </Route>
         <Route path='login' element={<Login currentUser={currentUser} handleSuccessfulAuth={this.handleLogin} />} />
         <Route path="*" element={<p>There's nothing here: 404!</p>} />

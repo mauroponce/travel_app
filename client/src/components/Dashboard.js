@@ -56,10 +56,10 @@ export default function Dashboard(props) {
                 <span>Home</span>
             </a>
 
-            <a href="#" className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
+            <Link to={'/trips'} className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
                 <span className="text-2xl"><i className="bx bx-shopping-bag"></i></span>
-                <Link to={'/trips'}>Trips</Link>
-            </a>
+                <span >Trips</span>
+            </Link>
 
             <a href="#" className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
                 <span className="text-2xl"><i className="bx bx-heart"></i></span>

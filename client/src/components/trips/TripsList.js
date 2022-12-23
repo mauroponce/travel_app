@@ -1,31 +1,22 @@
-import axios from 'axios'
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
+import { getTrips } from '../../services/trips';
 
-export default class TripsList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      trips: []
-    };
-  }
-  componentDidMount() {
-    axios.get('http://localhost:4000/api/v1/trips.json').then(response => {
-      this.setState({
-        trips: response.data
-      });
+export default function TripsList() {
+  const [trips, setTrips] = useState([]);
+  useEffect(() => {
+    getTrips().then(response => {
+      setTrips(response.data);
     });
-  }
+  }, []);
 
-  render() {
-    const {trips} = this.state;
-    return (
-      <div>
-        {trips.map(trip => (
-          <div key={trip.id}>
-            {trip.name}
-          </div>
-        ))}
-      </div>
-    )
-  }
+  return (
+    <div>
+      {trips.map(trip => (
+        <div key={trip.id}>
+          <Link to={`/trips/${trip.id}`} >{trip.name}</Link>
+        </div>
+      ))}
+    </div>
+  )
 }
