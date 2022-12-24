@@ -1,4 +1,3 @@
-import './App.css';
 import { Component } from 'react';
 import axios from 'axios';
 import {
@@ -74,8 +73,8 @@ export default class App extends Component {
           <Route index element={
             <Dashboard currentUser={currentUser} handleLogout={this.handleLogout}/>}
           />
-          <Route path="trips" element={<TripsList />} />
           <Route path="trips/:id" element={<Trip />} />
+          <Route path="trips" element={<TripsList />} />
           <Route path="trips/new" element={<TripForm />} />
         </Route>
         <Route path='login' element={<Login currentUser={currentUser} handleSuccessfulAuth={this.handleLogin} />} />
